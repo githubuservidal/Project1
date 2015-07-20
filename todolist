@@ -1,8 +1,13 @@
 $(document).ready(function () {
+    $('.list').html(JSON.parse(localStorage.getItem('list')));
+    
     $('#button').click(function () {
         var toAdd = $('input[name=checkListItem]').val();
         $('.list').append('<div class="item">' + toAdd + '</div>');
-    });
+    
+    localStorage.setItem('list', JSON.stringify($('.list').html()));
+
+});
 
     $(document).on('click', '.item', function () {
         if ($(this).parent().attr('class') == 'list') {
